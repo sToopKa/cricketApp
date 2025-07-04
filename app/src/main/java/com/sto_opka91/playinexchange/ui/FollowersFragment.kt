@@ -58,7 +58,7 @@ class FollowersFragment : Fragment() {
                     if(user.name.isNotEmpty()){
                         binding.tvName.text = user.name
                     }
-                    
+
                 }
             }
         }

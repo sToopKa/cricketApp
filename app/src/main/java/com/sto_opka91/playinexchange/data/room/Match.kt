@@ -11,6 +11,7 @@ data class Match(
     val city: String,
     val time: String,
     val enter: String,
-    val photoUri: String = ""
+    val photoUri: String = "",
+    val vs: String
 
 )

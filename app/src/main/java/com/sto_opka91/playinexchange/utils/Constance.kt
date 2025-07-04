@@ -4,14 +4,14 @@ import com.sto_opka91.playinexchange.R
 import com.sto_opka91.playinexchange.data.room.ArticleEntity
 import com.sto_opka91.playinexchange.data.room.Match
 
-val LIST_MATCHES = listOf(Match(1000, R.drawable.ic_match_1, "Narendra Modi Stadium, Ahmedabad","15:00", "free", ""),
-    Match(2000, R.drawable.ic_match_2, "Arun Jaitley Stadium, Delhi","16:00", "free", ""),
-    Match(3000, R.drawable.ic_match_3, "Eden Gardens, Kolkata","18:00", "100 rup", "")
+val LIST_MATCHES = listOf(Match(1000, R.drawable.ic_match_1, "Narendra Modi Stadium, Ahmedabad","15:00", "free", "", "Uttar Pradesh vs Tripura"),
+    Match(2000, R.drawable.ic_match_2, "Arun Jaitley Stadium, Delhi","16:00", "free", "","Orissa vs Mumbai"),
+    Match(3000, R.drawable.ic_match_3, "Eden Gardens, Kolkata","18:00", "100 rup", "", "Maharashtra vs Kerala")
 )
 
-val LIST_MY_MATCHES = listOf(Match(1000, R.drawable.ic_my_1, "Narendra Modi Stadium, Ahmedabad","15:00", "free", ""),
-    Match(2000, R.drawable.ic_my_2, "Arun Jaitley Stadium, Delhi","16:00", "free", ""),
-    Match(3000, R.drawable.ic_my_3, "Eden Gardens, Kolkata","18:00", "100 rup", "")
+val LIST_MY_MATCHES = listOf(Match(1000, R.drawable.ic_my_1, "Narendra Modi Stadium, Ahmedabad","15:00", "free", "", "Maharashtra vs Kerala"),
+    Match(2000, R.drawable.ic_my_2, "Arun Jaitley Stadium, Delhi","16:00", "free", "","Uttar Pradesh vs Tripura"),
+    Match(3000, R.drawable.ic_my_3, "Eden Gardens, Kolkata","18:00", "100 rup", "", "Orissa vs Mumbai")
 )
 
 val LIST_Article = listOf(ArticleEntity(1000, R.drawable.ic_my_1, "How to prepare for a cricket match","Each phase of the game is called an innings during which one team bats, attempting to score as many runs as possible, whilst their opponents bowl and field.\n" +

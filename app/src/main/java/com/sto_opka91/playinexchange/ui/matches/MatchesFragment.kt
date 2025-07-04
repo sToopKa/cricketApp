@@ -49,40 +49,16 @@ class MatchesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initRecyclerView()
-        viewModel.getAllMatches()
-        observeViewModel()
-
-        binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_matchesFragment_to_createMatchFragment)
-        }
 
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
     }
 
-    private fun observeViewModel() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.settingsState.collect { state ->
-                val mutableList = mutableListOf<Match>()
-                LIST_MY_MATCHES.forEach {
-                    mutableList.add(it)
-                }
-                if (state.matches!=null){
-                    state.matches.forEach {
-                        mutableList.add(it)
-                    }
-                }
-                adapterMatch.submitList(mutableList)
-
-            }
-        }
-    }
-
     private fun initRecyclerView() = with(binding) {
         rcMatches.layoutManager = LinearLayoutManager(requireContext())
         rcMatches.adapter = adapterMatch
-
+        adapterMatch.submitList(LIST_MY_MATCHES)
     }
 
 

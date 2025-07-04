@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.sto_opka91.playinexchange.R
@@ -17,6 +18,8 @@ import com.sto_opka91.playinexchange.data.room.Match
 import com.sto_opka91.playinexchange.databinding.FragmentCreateMatchBinding
 import com.sto_opka91.playinexchange.databinding.FragmentMatchesBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
 
@@ -64,11 +67,15 @@ class CreateMatchFragment : Fragment() {
             val price = binding.edContribution.text.toString()
 
             if(location==""||date==""||price==""){
-                Toast.makeText(requireContext(), "fill in the fields", Toast.LENGTH_LONG).show()
+
             }else{
-                val match = Match(null, null,location,date, price,uriImage)
-                viewModel.saveMatch(match)
-                Toast.makeText(requireContext(), "published the game", Toast.LENGTH_LONG).show()
+                val match = Match(null, null,location,date, price,uriImage, "My team vs Friends")
+                lifecycleScope.launch {
+                    viewModel.saveMatch(match)
+                    delay(300)
+                    findNavController().popBackStack()
+                }
+
             }
         }
 

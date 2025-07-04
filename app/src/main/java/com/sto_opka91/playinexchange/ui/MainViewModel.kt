@@ -10,7 +10,9 @@ import com.sto_opka91.playinexchange.data.room.Match
 import com.sto_opka91.playinexchange.data.room.UserEntity
 import com.sto_opka91.playinexchange.repository.RoomRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -20,6 +22,8 @@ import javax.inject.Inject
 class MainViewModel@Inject constructor(
     private val roomRepository: RoomRepository
 ) : ViewModel() {
+
+
 
     private val _settingsState = MutableStateFlow(AppHolader())
     val settingsState = _settingsState.asStateFlow()
@@ -34,6 +38,7 @@ class MainViewModel@Inject constructor(
     fun saveMatch(match: Match) {
         viewModelScope.launch {
             roomRepository.saveMatch(match)
+
         }
     }
 

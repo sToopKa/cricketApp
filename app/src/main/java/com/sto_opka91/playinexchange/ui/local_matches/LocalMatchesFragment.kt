@@ -7,14 +7,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.sto_opka91.playinexchange.R
 
 import com.sto_opka91.playinexchange.databinding.FragmentLocalMatchesBinding
 import com.sto_opka91.playinexchange.ui.MainViewModel
 import com.sto_opka91.playinexchange.ui.local_matches.adapter.LocalMatchesAdapter
 import com.sto_opka91.playinexchange.utils.LIST_MATCHES
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LocalMatchesFragment : Fragment() {
@@ -29,8 +33,11 @@ class LocalMatchesFragment : Fragment() {
     private fun initMatchAdapter(): LocalMatchesAdapter =
         LocalMatchesAdapter(
             onItemNavigateToScrollListener = { match ->
-                viewModel.saveMatch(match)
-                Toast.makeText(requireContext(), "You joined!", Toast.LENGTH_LONG).show()
+                lifecycleScope.launch {
+                    viewModel.saveMatch(match)
+                    delay(300)
+                    findNavController().navigate(R.id.action_navigation_home_to_navigation_notifications)
+                }
             })
 
     override fun onCreateView(

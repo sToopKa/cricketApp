@@ -65,11 +65,11 @@ class ArticleFragment : Fragment() {
 
 
             if(title==""||text==""){
-                Toast.makeText(requireContext(), "fill in the fields", Toast.LENGTH_LONG).show()
+
             }else{
                 val article = ArticleEntity(null, null,title,text, uriImage)
                 viewModel.saveArticle(article)
-                Toast.makeText(requireContext(), "published the game", Toast.LENGTH_LONG).show()
+                findNavController().popBackStack()
             }
         }
 

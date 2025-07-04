@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.sto_opka91.playinexchange.ui.local_matches.LocalMatchesFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_local_matches" />
+        tools:layout="@layout/fragment_local_matches" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_notifications"
+            app:destination="@id/navigation_notifications" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -37,7 +41,11 @@
         android:id="@+id/navigation_notifications"
         android:name="com.sto_opka91.playinexchange.ui.my_matches.MyMatchesFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_my_matches" />
+        tools:layout="@layout/fragment_my_matches" >
+        <action
+            android:id="@+id/action_navigation_notifications_to_createMatchFragment"
+            app:destination="@id/createMatchFragment" />
+    </fragment>
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.sto_opka91.playinexchange.ui.SplashFragment"
@@ -54,9 +62,6 @@
         <action
             android:id="@+id/action_matchesFragment_to_followersFragment"
             app:destination="@id/followersFragment" />
-        <action
-            android:id="@+id/action_matchesFragment_to_createMatchFragment"
-            app:destination="@id/createMatchFragment" />
     </fragment>
     <fragment
         android:id="@+id/followersFragment"
