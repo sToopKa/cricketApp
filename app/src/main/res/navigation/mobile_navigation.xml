@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.sto_opka91.playinexchange.ui.local_matches.LocalMatchesFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_local_matches" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.sto_opka91.playinexchange.ui.mainFragment.MainFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_navigation_notifications"
+            app:destination="@id/navigation_notifications" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_matchesFragment"
+            app:destination="@id/matchesFragment" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_articleListFragment"
+            app:destination="@id/articleListFragment" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.sto_opka91.playinexchange.ui.my_matches.MyMatchesFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_my_matches" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.sto_opka91.playinexchange.ui.SplashFragment"
+        android:label="SplashFragment" >
+
+        <action
+            android:id="@+id/action_splashFragment_to_navigation_dashboard"
+            app:destination="@id/navigation_dashboard" />
+    </fragment>
+    <fragment
+        android:id="@+id/matchesFragment"
+        android:name="com.sto_opka91.playinexchange.ui.matches.MatchesFragment"
+        android:label="MatchesFragment" >
+        <action
+            android:id="@+id/action_matchesFragment_to_followersFragment"
+            app:destination="@id/followersFragment" />
+        <action
+            android:id="@+id/action_matchesFragment_to_createMatchFragment"
+            app:destination="@id/createMatchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/followersFragment"
+        android:name="com.sto_opka91.playinexchange.ui.FollowersFragment"
+        android:label="FollowersFragment" />
+    <fragment
+        android:id="@+id/createMatchFragment"
+        android:name="com.sto_opka91.playinexchange.ui.CreateMatchFragment"
+        android:label="CreateMatchFragment" />
+    <fragment
+        android:id="@+id/articleListFragment"
+        android:name="com.sto_opka91.playinexchange.ui.articles.ArticleListFragment"
+        android:label="ArticleListFragment" >
+        <action
+            android:id="@+id/action_articleListFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.sto_opka91.playinexchange.ui.ArticleFragment"
+        android:label="ArticleFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.sto_opka91.playinexchange.ui.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+</navigation>

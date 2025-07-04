@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@color/inform"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/Image2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:padding="10dp"
+        android:src="@drawable/ic_close" />
+
+    <TextView
+        android:id="@+id/TextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/Image2"
+
+        android:text="The app is designed to search for cricket games and also to find companions to go to the match. Also you can create your match and invite your friends with you"
+        android:textAlignment="center"
+        android:textColor="#fff" />
+
+
+</RelativeLayout>

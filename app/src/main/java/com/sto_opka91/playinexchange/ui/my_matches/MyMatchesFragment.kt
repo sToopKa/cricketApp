@@ -1,0 +1,66 @@
+package com.sto_opka91.playinexchange.ui.my_matches
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.sto_opka91.playinexchange.databinding.FragmentMyMatchesBinding
+import com.sto_opka91.playinexchange.ui.MainViewModel
+import com.sto_opka91.playinexchange.ui.local_matches.adapter.LocalMatchesAdapter
+import com.sto_opka91.playinexchange.utils.LIST_MATCHES
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
+class MyMatchesFragment : Fragment() {
+
+    private var _binding: FragmentMyMatchesBinding? = null
+
+    private val binding get() = _binding!!
+
+    private val adapterMatch by lazy { initMatchAdapter() }
+
+    private val viewModel: MainViewModel by activityViewModels()
+    private fun initMatchAdapter(): LocalMatchesAdapter =
+        LocalMatchesAdapter(
+            onItemNavigateToScrollListener = { match ->
+                viewModel.saveMatch(match)
+                Toast.makeText(requireContext(), "You joined!", Toast.LENGTH_LONG).show()
+            })
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+
+        _binding = FragmentMyMatchesBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecyclerView()
+
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
+
+    private fun initRecyclerView() = with(binding) {
+        rcMatches.layoutManager = LinearLayoutManager(requireContext())
+        rcMatches.adapter = adapterMatch
+        adapterMatch.submitList(LIST_MATCHES)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}
